@@ -1,0 +1,40 @@
+import random
+
+# Define the questions and their answers in a dictionary
+questions = {
+    "What is the capital of France?": ["Paris", "Madrid", "London", "Berlin"],
+    "What is the largest planet in our solar system?": ["Jupiter", "Mars", "Venus", "Mercury"],
+    "What is the tallest mammal?": ["Giraffe", "Elephant", "Hippopotamus", "Rhinoceros"]
+}
+
+# Shuffle the questions
+question_list = list(questions.items())
+random.shuffle(question_list)
+
+# Initialize the score
+score = 0
+
+# Loop through each question and ask the user
+for question, choices in question_list:
+    # Shuffle the answer choices
+    random.shuffle(choices)
+    
+    # Print the question and choices
+    print(question)
+    for i, choice in enumerate(choices):
+        print(f"{i+1}. {choice}")
+    
+    # Get the user's answer
+    answer = input("Enter the number of your answer: ")
+    
+    # Check if the answer is correct
+    if choices[int(answer)-1] == questions[question][0]:
+        print("Correct!")
+        score += 1
+    else:
+        print(f"Incorrect. The correct answer is {questions[question][0]}")
+    
+    print() # Add a blank line for spacing
+
+# Print the final score
+print(f"You scored {score} out of {len(questions)}")
